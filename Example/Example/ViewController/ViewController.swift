@@ -1,34 +1,15 @@
-# WWSimpleChatGPT
-[![Swift-5.6](https://img.shields.io/badge/Swift-5.6-orange.svg?style=flat)](https://developer.apple.com/swift/) [![iOS-14.0](https://img.shields.io/badge/iOS-14.0-pink.svg?style=flat)](https://developer.apple.com/swift/) ![](https://img.shields.io/github/v/tag/William-Weng/WWSimpleChatGPT) [![Swift Package Manager-SUCCESS](https://img.shields.io/badge/Swift_Package_Manager-SUCCESS-blue.svg?style=flat)](https://developer.apple.com/swift/) [![LICENSE](https://img.shields.io/badge/LICENSE-MIT-yellow.svg?style=flat)](https://developer.apple.com/swift/)
+//
+//  ViewController.swift
+//  Example
+//
+//  Created by William.Weng on 2024/1/1.
+//
 
-## [Introduction - 簡介](https://swiftpackageindex.com/William-Weng)
-- Simply use the functionality of ChatGPT.
-- 簡單的使用ChatGPT的功能。
-
-![](./Example.gif)
-
-### [Installation with Swift Package Manager](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/使用-spm-安裝第三方套件-xcode-11-新功能-2c4ffcf85b4b)
-```js
-dependencies: [
-    .package(url: "https://github.com/William-Weng/WWSimpleChatGPT.git", .upToNextMajor(from: "0.5.0"))
-]
-```
-
-### Function - 可用函式
-|函式|功能|
-|-|-|
-|configure(bearerToken:version)|設定bearerToken|
-|chat(model:role:temperature:content:)|執行聊天功能|
-|image(model:prompt:n:size:)|文字生成圖片|
-|speech(model:voice:speed:input:)|文字轉語音|
-|whisper(model:contentType:data:)|語音轉文字|
-
-### Example - 範例
-```swift
 import UIKit
 import WWHUD
 import WWSimpleChatGPT
 
+// MARK: - ViewController
 final class ViewController: UIViewController {
     
     private let bearerToken = "<bearerToken>"
@@ -47,12 +28,16 @@ final class ViewController: UIViewController {
     @IBAction func whisper(_ sender: UIButton) { whisperAction(filename: "speech.mp3") }
 }
 
+// MARK: - 小工具
 private extension ViewController {
     
+    /// 設定Token
     func initSetting() {
         WWSimpleChatGPT.configure(bearerToken: bearerToken)
     }
     
+    /// 顯示結果
+    /// - Parameter result: Result<T?, Error>
     func displayResult<T>(result: Result<T?, Error>) {
         
         switch result {
@@ -63,14 +48,18 @@ private extension ViewController {
         WWHUD.shared.dismiss(completion: nil)
     }
     
+    /// Loading動畫
     func loading() {
         guard let url = Bundle.main.url(forResource: "loading.gif", withExtension: nil) else { return }
         WWHUD.shared.display(effect: .gif(url: url), height: 256)
     }
 }
 
+// MARK: - 小工具
 private extension ViewController {
-    
+        
+    /// 聊天功能
+    /// - Parameter content: 提出的問題文字
     func chatAction(content: String?) {
         
         guard let content = content else { return }
@@ -83,6 +72,10 @@ private extension ViewController {
         }
     }
     
+    /// 圖片生成
+    /// - Parameters:
+    ///   - prompt: 對想繪出的圖片述敘
+    ///   - count: 生成的張數
     func imagesAction(prompt: String?, count: Int) {
      
         guard let prompt = prompt else { return }
@@ -95,6 +88,8 @@ private extension ViewController {
         }
     }
     
+    /// 文字轉語音
+    /// - Parameter input: String?
     func speechAction(input: String?) {
         
         guard let input = input else { return }
@@ -107,6 +102,8 @@ private extension ViewController {
         }
     }
     
+    /// 語音轉文字
+    /// - Parameter audioData: Data?
     func whisperAction(filename: String) {
         
         guard let url = Bundle.main.url(forResource: filename, withExtension: nil),
@@ -123,4 +120,3 @@ private extension ViewController {
         }
     }
 }
-```

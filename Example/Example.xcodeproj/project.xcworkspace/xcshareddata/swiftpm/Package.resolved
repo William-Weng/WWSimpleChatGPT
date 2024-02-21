@@ -1,0 +1,41 @@
+{
+  "pins" : [
+    {
+      "identity" : "wwhud",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/William-Weng/WWHUD",
+      "state" : {
+        "revision" : "7579ebf2b1fee3d81bdd35a829f05ed1e1cbed3c",
+        "version" : "1.1.4"
+      }
+    },
+    {
+      "identity" : "wwnetworking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/William-Weng/WWNetworking.git",
+      "state" : {
+        "revision" : "03ebe85587b0d647065cfb5eeae944204eeedc75",
+        "version" : "1.5.0"
+      }
+    },
+    {
+      "identity" : "wwprint",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/William-Weng/WWPrint",
+      "state" : {
+        "revision" : "0acf1057863faea81c3ded2057c21b09c3435435",
+        "version" : "1.3.0"
+      }
+    },
+    {
+      "identity" : "wwsimplechatgpt",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/William-Weng/WWSimpleChatGPT",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b9f3d001b1344265727c9132fae95ed812ed1867"
+      }
+    }
+  ],
+  "version" : 2
+}
