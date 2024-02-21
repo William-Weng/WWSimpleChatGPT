@@ -14,11 +14,11 @@ dependencies: [
 ]
 ```
 
-### Function - 可用函式
+### [Function - 可用函式](https://platform.openai.com/)
 |函式|功能|
 |-|-|
-|configure(bearerToken:version)|設定bearerToken|
-|chat(model:role:temperature:content:)|執行聊天功能|
+|configure(bearerToken:version)|[設定bearerToken](https://platform.openai.com/account/api-keys)|
+|chat(model:role:temperature:content:)|[執行聊天功能](https://platform.openai.com/docs/api-reference/making-requests)|
 |image(model:prompt:n:size:)|文字生成圖片|
 |speech(model:voice:speed:input:)|文字轉語音|
 |whisper(model:contentType:data:)|語音轉文字|
