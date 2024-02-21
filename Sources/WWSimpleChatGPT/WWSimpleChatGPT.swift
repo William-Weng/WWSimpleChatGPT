@@ -93,7 +93,7 @@ public extension WWSimpleChatGPT {
     ///   - speed: Double
     ///   - input: Double
     /// - Returns: Result<Data?, Error>
-    func speech(model: WWSimpleChatGPT.Model.TTS = .tts, voice: WWSimpleChatGPT.Model.Voice = .alloy, speed: Double = 1.0, input: String) async -> Result<Data?, Error> {
+    func speech(model: WWSimpleChatGPT.Model.TTS = .v1, voice: WWSimpleChatGPT.Model.Voice = .alloy, speed: Double = 1.0, input: String) async -> Result<Data?, Error> {
         let apiURL: WWSimpleChatGPT.API = .speech
         return await speech(apiURL: apiURL.value(), model: model.value(), voice: voice.value(), speed: speed, input: input)
     }

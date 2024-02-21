@@ -45,7 +45,7 @@ public extension WWSimpleChatGPT {
             case .threads: path = "threads"
             }
             
-            return "\(WWSimpleChatGPT.baseURL)/\(version)/\(path)"
+            return "\(WWSimpleChatGPT.baseURL)/\(WWSimpleChatGPT.version)/\(path)"
         }
     }
     
@@ -77,15 +77,15 @@ public extension WWSimpleChatGPT.Model {
     /// 語音模組
     enum TTS {
         
-        case tts
-        case tts_hd
+        case v1
+        case v1_hd
         
         /// 取得語音模組名稱
         /// - Returns: String
         func value() -> String {
             switch self {
-            case .tts: return "tts-1"
-            case .tts_hd: return "tts-1-hd"
+            case .v1: return "tts-1"
+            case .v1_hd: return "tts-1-hd"
             }
         }
     }
