@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import WWNetworking
+
+public extension WWSimpleChatGPT {
+    
+    typealias WhisperAudio = (type: WWSimpleChatGPT.Model.WhisperAudioType, data: Data)     // 語音轉文字 (WhisperAudioType, Data)
+}
 
 // MARK: - enum
 public extension WWSimpleChatGPT {
@@ -125,6 +131,41 @@ public extension WWSimpleChatGPT.Model {
             switch self {
             case .v1: return "whisper-1"
             }
+        }
+    }
+    
+    /// 耳語模組能轉換的類型
+    enum WhisperAudioType: String {
+        
+        case flac
+        case mp3
+        case mp4
+        case mpeg
+        case mpga
+        case m4a
+        case ogg
+        case wav
+        case webm
+        
+        /// [取得MIME類型文字](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
+        /// - Returns: [String](https://www.iana.org/assignments/media-types/media-types.xhtml)
+        func contentType() -> WWNetworking.Constant.ContentType {
+            
+            let mime: WWNetworking.Constant.ContentType
+            
+            switch self {
+            case .mp3: mime = .mp3
+            case .mpeg: mime = .mpeg
+            case .mpga: mime = .mpga
+            case .mp4: mime = .mp4
+            case .ogg: mime = .ogg
+            case .wav: mime = .wav
+            case .webm: mime = .webm
+            case .m4a: mime = .m4a
+            case .flac: mime = .flac
+            }
+            
+            return mime
         }
     }
     

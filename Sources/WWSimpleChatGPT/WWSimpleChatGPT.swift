@@ -102,12 +102,11 @@ public extension WWSimpleChatGPT {
     /// - Parameters:
     ///   - apiURL: String
     ///   - model: 語音模組
-    ///   - contentType: 語音資料類型
-    ///   - data: 語音資料
+    ///   - audio: WWSimpleChatGPT.WhisperAudio
     /// - Returns: Result<String?, Error>
-    func whisper(model: WWSimpleChatGPT.Model.Whisper = .v1, contentType: WWNetworking.Constant.ContentType, data: Data) async -> Result<String?, Error> {
+    func whisper(model: WWSimpleChatGPT.Model.Whisper = .v1, audio: WWSimpleChatGPT.WhisperAudio) async -> Result<String?, Error> {
         let apiURL: WWSimpleChatGPT.API = .whisper
-        return await whisper(apiURL: apiURL.value(), model: model.value(), contentType: contentType, data: data)
+        return await whisper(apiURL: apiURL.value(), model: model.value(), audioType: audio.type, data: audio.data)
     }
     
     /// 文字生成圖片
@@ -208,13 +207,13 @@ private extension WWSimpleChatGPT {
     /// - Parameters:
     ///   - apiURL: String
     ///   - model: 語音模組
-    ///   - contentType: 語音資料類型
+    ///   - audioType: 語音資料類型
     ///   - data: 語音資料
     /// - Returns: Result<String?, Error>
-    func whisper(apiURL: String, model: String, contentType: WWNetworking.Constant.ContentType, data: Data) async -> Result<String?, Error>  {
+    func whisper(apiURL: String, model: String, audioType: WWSimpleChatGPT.Model.WhisperAudioType = .mp3, data: Data) async -> Result<String?, Error>  {
         
         let headers = authorizationHeaders()
-        let formData: WWNetworking.FormDataInformation = (name: "file", filename: "whisper.mp3", contentType: contentType, data: data)
+        let formData: WWNetworking.FormDataInformation = (name: "file", filename: "whisper.\(audioType.rawValue)", contentType: audioType.contentType(), data: data)
         let parameters = ["model": model]
         let result = await WWNetworking.shared.upload(urlString: apiURL, formData: formData, parameters: parameters, headers: headers)
         

@@ -12,7 +12,7 @@ let package = Package(
         .library(name: "WWSimpleChatGPT", targets: ["WWSimpleChatGPT"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/William-Weng/WWNetworking.git", from: "1.5.0"),
+        .package(url: "https://github.com/William-Weng/WWNetworking.git", from: "1.5.1"),
     ],
     targets: [
         .target(name: "WWSimpleChatGPT", dependencies: ["WWNetworking"])
