@@ -115,7 +115,7 @@ private extension ViewController {
         loading()
         
         Task {
-            let result = await WWSimpleChatGPT.shared.whisper(model: .v1, contentType: .mp3, data: data)
+            let result = await WWSimpleChatGPT.shared.whisper(model: .v1, audio: (type: .mp3, data: data))
             displayResult(result: result)
         }
     }
