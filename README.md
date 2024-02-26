@@ -21,7 +21,7 @@ dependencies: [
 |chat(model:role:temperature:content:)|[執行聊天功能](https://platform.openai.com/docs/api-reference/making-requests)|
 |image(model:prompt:n:size:)|文字生成圖片|
 |speech(model:voice:speed:input:)|文字轉語音|
-|whisper(model:contentType:data:)|語音轉文字|
+|whisper(model:audio:)|語音轉文字|
 
 ### Example - 範例
 ```swift
