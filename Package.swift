@@ -15,7 +15,7 @@ let package = Package(
         .package(url: "https://github.com/William-Weng/WWNetworking.git", from: "1.5.1"),
     ],
     targets: [
-        .target(name: "WWSimpleChatGPT", dependencies: ["WWNetworking"])
+        .target(name: "WWSimpleChatGPT", dependencies: ["WWNetworking"], resources: [.copy("Privacy")])
     ],
     swiftLanguageVersions: [
         .v5
