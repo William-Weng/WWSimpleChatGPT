@@ -64,18 +64,20 @@ public extension WWSimpleChatGPT {
 // MARK: - 模組
 public extension WWSimpleChatGPT.Model {
     
-    /// 聊天模組
+    /// [聊天模組](https://platform.openai.com/docs/models)
     enum Chat {
         
         case v3_5
         case v4
+        case v4o
         
         /// 取得GPT模組名稱
         /// - Returns: String
         func value() -> String {
             switch self {
             case .v3_5: return "gpt-3.5-turbo-0125"
-            case .v4: return "gpt-4-0125-preview"
+            case .v4: return "gpt-4-turbo"
+            case .v4o: return "gpt-4o"
             }
         }
     }
