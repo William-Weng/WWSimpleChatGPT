@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/William-Weng/WWHUD",
       "state" : {
-        "revision" : "9587c687d2bef23727a9fbc827cf46af63d1917f",
-        "version" : "1.2.0"
+        "revision" : "24d6218c7fac396f2c725bad422f3409cb592487",
+        "version" : "1.3.0"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/William-Weng/WWNetworking.git",
       "state" : {
-        "revision" : "d47d710216c892d13684de471158d35f67d27399",
-        "version" : "1.5.1"
+        "revision" : "cad6323f8ec5b7fe87ac4c0e820c0529d402e5e1",
+        "version" : "1.6.2"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/William-Weng/WWPrint",
       "state" : {
-        "revision" : "0acf1057863faea81c3ded2057c21b09c3435435",
-        "version" : "1.3.0"
+        "revision" : "8f5928f5d36624d77f8fc563fd8e31a59cfac6b6",
+        "version" : "1.3.1"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/William-Weng/WWSimpleChatGPT",
       "state" : {
-        "revision" : "685ffea85fff6fe4ba0589410930bb80422a85b1",
-        "version" : "0.5.3"
+        "revision" : "e89836ced5d7c32e0f0b88dad84e34a8ae8542d8",
+        "version" : "0.5.4"
       }
     }
   ],

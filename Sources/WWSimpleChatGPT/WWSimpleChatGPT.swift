@@ -39,41 +39,6 @@ public extension WWSimpleChatGPT {
 // MARK: - 開放工具
 public extension WWSimpleChatGPT {
     
-    /// 執行API功能
-    /// - Parameters:
-    ///   - method: WWNetworking.Constant.HttpMethod
-    ///   - apiURL: String
-    ///   - httpBody: String
-    /// - Returns: Result<WWNetworking.ResponseInformation, Error>
-    func execute(method: WWNetworking.Constant.HttpMethod = .POST, apiURL: String, httpBody: String?) async -> Result<WWNetworking.ResponseInformation, Error> {
-        
-        let headers = authorizationHeaders()
-        let result = await WWNetworking.shared.request(with: method, urlString: apiURL, contentType: .json, paramaters: nil, headers: headers, httpBody: httpBody?._data())
-        
-        return result
-    }
-    
-    /// 模型列表
-    /// - Returns: Result<WWNetworking.ResponseInformation, Error>
-    func models() async -> Result<Any?, Error> {
-        
-        let apiURL: WWSimpleChatGPT.API = .models
-        let result = await execute(method: .GET, apiURL: apiURL.value(), httpBody: nil)
-        
-        switch result {
-        case .failure(let error): return .failure(error)
-        case .success(let info):
-            
-            guard let data = info.data,
-                  let jsonObject = data._jsonObject()
-            else {
-                return .success(nil)
-            }
-            
-            return .success(jsonObject)
-        }
-    }
-    
     /// 執行聊天功能
     /// - Parameters:
     ///   - model: WWSimpleChatGPT.Model.Chat
@@ -125,6 +90,41 @@ public extension WWSimpleChatGPT {
 
 // MARK: 小工具
 private extension WWSimpleChatGPT {
+    
+    /// 執行API功能
+    /// - Parameters:
+    ///   - httpMethod: WWNetworking.Constant.HttpMethod
+    ///   - apiURL: String
+    ///   - httpBody: String
+    /// - Returns: Result<WWNetworking.ResponseInformation, Error>
+    func execute(httpMethod: WWNetworking.Constant.HttpMethod = .POST, apiURL: String, httpBody: String?) async -> Result<WWNetworking.ResponseInformation, Error> {
+        
+        let headers = authorizationHeaders()
+        let result = await WWNetworking.shared.request(httpMethod: httpMethod, urlString: apiURL, contentType: .json, paramaters: nil, headers: headers, httpBodyType: .string(httpBody))
+        
+        return result
+    }
+    
+    /// 模型列表
+    /// - Returns: Result<WWNetworking.ResponseInformation, Error>
+    func models() async -> Result<Any?, Error> {
+        
+        let apiURL: WWSimpleChatGPT.API = .models
+        let result = await execute(httpMethod: .GET, apiURL: apiURL.value(), httpBody: nil)
+        
+        switch result {
+        case .failure(let error): return .failure(error)
+        case .success(let info):
+            
+            guard let data = info.data,
+                  let jsonObject = data._jsonObject()
+            else {
+                return .success(nil)
+            }
+            
+            return .success(jsonObject)
+        }
+    }
     
     /// 安全認證Header
     /// - Returns: [String: String?]

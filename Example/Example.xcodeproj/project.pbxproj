@@ -15,8 +15,9 @@
 		3DBCD88026F198F300522E3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCD87E26F198F300522E3B /* LaunchScreen.storyboard */; };
 		8130039027D5D18100436128 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8130038F27D5D18100436128 /* Constant.swift */; };
 		8130039227D5D19000436128 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8130039127D5D19000436128 /* Extension.swift */; };
+		8140A4682C40FB6A0057AF5E /* WWSimpleChatGPT in Frameworks */ = {isa = PBXBuildFile; productRef = 8140A4672C40FB6A0057AF5E /* WWSimpleChatGPT */; };
+		8140A46B2C40FC220057AF5E /* WWSimpleChatGPT in Frameworks */ = {isa = PBXBuildFile; productRef = 8140A46A2C40FC220057AF5E /* WWSimpleChatGPT */; };
 		815F4B252B85A7E900C59037 /* WWHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 815F4B242B85A7E900C59037 /* WWHUD */; };
-		815F4B282B85AA7000C59037 /* WWSimpleChatGPT in Frameworks */ = {isa = PBXBuildFile; productRef = 815F4B272B85AA7000C59037 /* WWSimpleChatGPT */; };
 		817DBC742B859570004D94B1 /* WWSimpleChatGPT in Frameworks */ = {isa = PBXBuildFile; productRef = 817DBC732B859570004D94B1 /* WWSimpleChatGPT */; };
 		817DBC792B859F19004D94B1 /* speech.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 817DBC782B859F19004D94B1 /* speech.mp3 */; };
 		817DBC7B2B85A4D4004D94B1 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 817DBC7A2B85A4D4004D94B1 /* loading.gif */; };
@@ -43,7 +44,8 @@
 			files = (
 				815F4B252B85A7E900C59037 /* WWHUD in Frameworks */,
 				817DBC742B859570004D94B1 /* WWSimpleChatGPT in Frameworks */,
-				815F4B282B85AA7000C59037 /* WWSimpleChatGPT in Frameworks */,
+				8140A4682C40FB6A0057AF5E /* WWSimpleChatGPT in Frameworks */,
+				8140A46B2C40FC220057AF5E /* WWSimpleChatGPT in Frameworks */,
 				3DAC9C1927016E78006663C2 /* WWPrint in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,7 +154,8 @@
 				3DAC9C1827016E78006663C2 /* WWPrint */,
 				817DBC732B859570004D94B1 /* WWSimpleChatGPT */,
 				815F4B242B85A7E900C59037 /* WWHUD */,
-				815F4B272B85AA7000C59037 /* WWSimpleChatGPT */,
+				8140A4672C40FB6A0057AF5E /* WWSimpleChatGPT */,
+				8140A46A2C40FC220057AF5E /* WWSimpleChatGPT */,
 			);
 			productName = Example;
 			productReference = 3DBCD87026F198EF00522E3B /* Example.app */;
@@ -185,7 +188,7 @@
 			packageReferences = (
 				3DAC9C1727016E78006663C2 /* XCRemoteSwiftPackageReference "WWPrint" */,
 				815F4B232B85A7E900C59037 /* XCRemoteSwiftPackageReference "WWHUD" */,
-				815F4B262B85AA7000C59037 /* XCRemoteSwiftPackageReference "WWSimpleChatGPT" */,
+				8140A4692C40FC220057AF5E /* XCRemoteSwiftPackageReference "WWSimpleChatGPT" */,
 			);
 			productRefGroup = 3DBCD87126F198EF00522E3B /* Products */;
 			projectDirPath = "";
@@ -439,20 +442,20 @@
 				minimumVersion = 1.3.0;
 			};
 		};
+		8140A4692C40FC220057AF5E /* XCRemoteSwiftPackageReference "WWSimpleChatGPT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/William-Weng/WWSimpleChatGPT";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.4;
+			};
+		};
 		815F4B232B85A7E900C59037 /* XCRemoteSwiftPackageReference "WWHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/William-Weng/WWHUD";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.1.0;
-			};
-		};
-		815F4B262B85AA7000C59037 /* XCRemoteSwiftPackageReference "WWSimpleChatGPT" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/William-Weng/WWSimpleChatGPT";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -463,15 +466,19 @@
 			package = 3DAC9C1727016E78006663C2 /* XCRemoteSwiftPackageReference "WWPrint" */;
 			productName = WWPrint;
 		};
+		8140A4672C40FB6A0057AF5E /* WWSimpleChatGPT */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WWSimpleChatGPT;
+		};
+		8140A46A2C40FC220057AF5E /* WWSimpleChatGPT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8140A4692C40FC220057AF5E /* XCRemoteSwiftPackageReference "WWSimpleChatGPT" */;
+			productName = WWSimpleChatGPT;
+		};
 		815F4B242B85A7E900C59037 /* WWHUD */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 815F4B232B85A7E900C59037 /* XCRemoteSwiftPackageReference "WWHUD" */;
 			productName = WWHUD;
-		};
-		815F4B272B85AA7000C59037 /* WWSimpleChatGPT */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 815F4B262B85AA7000C59037 /* XCRemoteSwiftPackageReference "WWSimpleChatGPT" */;
-			productName = WWSimpleChatGPT;
 		};
 		817DBC732B859570004D94B1 /* WWSimpleChatGPT */ = {
 			isa = XCSwiftPackageProductDependency;
