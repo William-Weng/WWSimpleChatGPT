@@ -70,14 +70,22 @@ public extension WWSimpleChatGPT.Model {
         case v3_5
         case v4
         case v4o
+        case v4o_mini
+        case vo1
+        case vo1_mini
+        case custom(_ version: String)
         
         /// 取得GPT模組名稱
         /// - Returns: String
         func value() -> String {
             switch self {
-            case .v3_5: return "gpt-3.5-turbo-0125"
+            case .v3_5: return "gpt-3.5-turbo"
             case .v4: return "gpt-4-turbo"
             case .v4o: return "gpt-4o"
+            case .v4o_mini: return "gpt-4o-mini"
+            case .vo1: return "o1-preview"
+            case .vo1_mini: return "o1-mini"
+            case .custom(let version): return version
             }
         }
     }
