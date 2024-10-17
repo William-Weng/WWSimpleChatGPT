@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/William-Weng/WWSimpleChatGPT",
       "state" : {
-        "revision" : "8479273e6851c21df0c63895e563dab343bb2393",
-        "version" : "0.5.8"
+        "revision" : "14fd2cfb26cc78cf4d1a3f225e9dd79aa14be283",
+        "version" : "0.5.9"
       }
     }
   ],

@@ -12,7 +12,7 @@ import WWSimpleChatGPT
 // MARK: - ViewController
 final class ViewController: UIViewController {
     
-    private let bearerToken = "<bearerToken>"
+    private let apiKey = "<bearerToken>"
     
     @IBOutlet weak var myTextField: UITextField!
     @IBOutlet weak var resultTextView: UITextView!
@@ -33,7 +33,7 @@ private extension ViewController {
     
     /// 設定Token
     func initSetting() {
-        WWSimpleChatGPT.configure(bearerToken: bearerToken)
+        WWSimpleChatGPT.configure(apiKey: apiKey)
     }
     
     /// 顯示結果
@@ -67,7 +67,7 @@ private extension ViewController {
         loading()
         
         Task {
-            let result = await WWSimpleChatGPT.shared.chat(content: content)
+            let result = await WWSimpleChatGPT.shared.chat(model: .v4o, content: content)
             displayResult(result: result)
         }
     }
