@@ -17,7 +17,7 @@ dependencies: [
 ### [Function - 可用函式](https://platform.openai.com/)
 |函式|功能|
 |-|-|
-|configure(bearerToken:version)|[設定bearerToken](https://platform.openai.com/account/api-keys)|
+|configure(apiKey:version)|[設定apiKey](https://platform.openai.com/account/api-keys)|
 |chat(model:role:temperature:content:)|[執行聊天功能](https://platform.openai.com/docs/api-reference/making-requests)|
 |image(model:prompt:n:size:)|文字生成圖片|
 |speech(model:voice:speed:input:)|文字轉語音|
@@ -31,7 +31,7 @@ import WWSimpleChatGPT
 
 final class ViewController: UIViewController {
     
-    private let bearerToken = "<bearerToken>"
+    private let apiKey = "<apiKey>"
     
     @IBOutlet weak var myTextField: UITextField!
     @IBOutlet weak var resultTextView: UITextView!
@@ -50,7 +50,7 @@ final class ViewController: UIViewController {
 private extension ViewController {
     
     func initSetting() {
-        WWSimpleChatGPT.configure(bearerToken: bearerToken)
+        WWSimpleChatGPT.configure(apiKey: apiKey)
     }
     
     func displayResult<T>(result: Result<T?, Error>) {
@@ -78,7 +78,7 @@ private extension ViewController {
         loading()
         
         Task {
-            let result = await WWSimpleChatGPT.shared.chat(content: content)
+            let result = await WWSimpleChatGPT.shared.chat(model: .v4o, content: content)
             displayResult(result: result)
         }
     }

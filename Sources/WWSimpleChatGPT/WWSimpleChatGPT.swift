@@ -16,7 +16,7 @@ open class WWSimpleChatGPT {
     static let baseURL = "https://api.openai.com"
     
     static var version = "v1"
-    static var bearerToken = "<BearerToken>"
+    static var apiKey = "<ApiKey>"
     
     public struct Model {}
     
@@ -28,10 +28,10 @@ public extension WWSimpleChatGPT {
     
     /// [參數設定](https://platform.openai.com/docs/api-reference/making-requests)
     /// - Parameters:
-    ///   - bearerToken: [String](https://platform.openai.com/account/api-keys)
+    ///   - apiKey: [String](https://platform.openai.com/account/api-keys)
     ///   - version: String
-    static func configure(bearerToken: String, version: String = "v1") {
-        self.bearerToken = bearerToken
+    static func configure(apiKey: String, version: String = "v1") {
+        self.apiKey = apiKey
         self.version = version
     }
 }
@@ -46,7 +46,7 @@ public extension WWSimpleChatGPT {
     ///   - temperature: Double
     ///   - content: String
     /// - Returns: Result<String?, Error>
-    func chat(model: WWSimpleChatGPT.Model.Chat = .v3_5, role: String = "user", temperature: Double = 0.7, content: String) async -> Result<String?, Error> {
+    func chat(model: WWSimpleChatGPT.Model.Chat, role: String = "user", temperature: Double = 0.7, content: String) async -> Result<String?, Error> {
         let apiURL: WWSimpleChatGPT.API = .chat
         return await chat(apiURL: apiURL.value(), model: model.value(), role: role, temperature: temperature, content: content)
     }
@@ -129,7 +129,7 @@ private extension WWSimpleChatGPT {
     /// 安全認證Header
     /// - Returns: [String: String?]
     func authorizationHeaders() -> [String: String?] {
-        let headers: [String: String?] = ["Authorization": "Bearer \(WWSimpleChatGPT.bearerToken)"]
+        let headers: [String: String?] = ["Authorization": "Bearer \(WWSimpleChatGPT.apiKey)"]
         return headers
     }
     
