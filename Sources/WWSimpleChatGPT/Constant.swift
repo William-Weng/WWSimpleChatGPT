@@ -73,7 +73,7 @@ public extension WWSimpleChatGPT.Model {
         case v4o_mini
         case vo1
         case vo1_mini
-        case custom(_ version: String)
+        case custom(_ model: String)
         
         /// 取得GPT模組名稱
         /// - Returns: String
@@ -85,7 +85,25 @@ public extension WWSimpleChatGPT.Model {
             case .v4o_mini: return "gpt-4o-mini"
             case .vo1: return "o1-preview"
             case .vo1_mini: return "o1-mini"
-            case .custom(let version): return version
+            case .custom(let model): return model
+            }
+        }
+    }
+    
+    /// 圖片生成模組
+    enum ImageModel {
+        
+        case v2
+        case v3
+        case custom(_ model: String)
+        
+        /// 模型名稱
+        /// - Returns: String
+        func value() -> String {
+            switch self {
+            case .v2: return "dall-e-2"
+            case .v3: return "dall-e-3"
+            case .custom(let model): return model
             }
         }
     }
@@ -95,6 +113,7 @@ public extension WWSimpleChatGPT.Model {
         
         case v1
         case v1_hd
+        case custom(_ model: String)
         
         /// 取得語音模組名稱
         /// - Returns: String
@@ -102,6 +121,7 @@ public extension WWSimpleChatGPT.Model {
             switch self {
             case .v1: return "tts-1"
             case .v1_hd: return "tts-1-hd"
+            case .custom(let model): return model
             }
         }
     }
@@ -115,6 +135,7 @@ public extension WWSimpleChatGPT.Model {
         case onyx
         case nova
         case shimmer
+        case custom(_ model: String)
         
         /// 取得聲音模組名稱
         /// - Returns: String
@@ -126,6 +147,7 @@ public extension WWSimpleChatGPT.Model {
             case .onyx: return "onyx"
             case .nova: return "nova"
             case .shimmer: return "shimmer"
+            case .custom(let model): return model
             }
         }
     }
@@ -134,12 +156,14 @@ public extension WWSimpleChatGPT.Model {
     enum Whisper {
         
         case v1
+        case custom(_ model: String)
         
         /// 取得語音轉文字模組名稱
         /// - Returns: String
         func value() -> String {
             switch self {
             case .v1: return "whisper-1"
+            case .custom(let model): return model
             }
         }
     }
@@ -187,6 +211,7 @@ public extension WWSimpleChatGPT.Model {
         case _1024x1024
         case _1024x1792
         case _1792x1024
+        case custom(_ size: String)
         
         /// 尺寸文字
         /// - Returns: String
@@ -197,22 +222,7 @@ public extension WWSimpleChatGPT.Model {
             case ._1024x1024: return "1024x1024"
             case ._1024x1792: return "1024x1792"
             case ._1792x1024: return "1792x1024"
-            }
-        }
-    }
-    
-    /// 圖片生成模型
-    enum ImageModel {
-        
-        case v2
-        case v3
-        
-        /// 模型名稱
-        /// - Returns: String
-        func value() -> String {
-            switch self {
-            case .v2: return "dall-e-2"
-            case .v3: return "dall-e-3"
+            case .custom(let size): return size
             }
         }
     }

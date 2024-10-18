@@ -42,7 +42,7 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func chat(_ sender: UIButton) { chatAction(content: myTextField.text) }
-    @IBAction func images(_ sender: UIButton) { imagesAction(prompt: myTextField.text, count: 5) }
+    @IBAction func images(_ sender: UIButton) { imagesAction(prompt: myTextField.text, count: 1) }
     @IBAction func speech(_ sender: UIButton) { speechAction(input: myTextField.text) }
     @IBAction func whisper(_ sender: UIButton) { whisperAction(filename: "speech.mp3") }
 }
@@ -90,7 +90,7 @@ private extension ViewController {
         loading()
         
         Task {
-            let result = await WWSimpleChatGPT.shared.image(model: .v2, prompt: prompt, n: count, size: ._256x256)
+            let result = await WWSimpleChatGPT.shared.image(model: .v3, prompt: prompt, n: count, size: ._1024x1024)
             displayResult(result: result)
         }
     }

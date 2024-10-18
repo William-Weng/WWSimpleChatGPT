@@ -46,7 +46,7 @@ public extension WWSimpleChatGPT {
     ///   - temperature: Double
     ///   - content: String
     /// - Returns: Result<String?, Error>
-    func chat(model: WWSimpleChatGPT.Model.Chat, role: String = "user", temperature: Double = 0.7, content: String) async -> Result<String?, Error> {
+    func chat(model: WWSimpleChatGPT.Model.Chat = .v4o, role: String = "user", temperature: Double = 0.7, content: String) async -> Result<String?, Error> {
         let apiURL: WWSimpleChatGPT.API = .chat
         return await chat(apiURL: apiURL.value(), model: model.value(), role: role, temperature: temperature, content: content)
     }
@@ -249,7 +249,7 @@ private extension WWSimpleChatGPT {
             "size": "\(size)"
         }
         """
-        
+                
         let result = await execute(apiURL: apiURL, httpBody: httpBody)
         
         switch result {
