@@ -19,17 +19,18 @@ public extension WWSimpleChatGPT {
     /// API功能
     enum API {
         
-        case chat           // 聊天問答
-        case speech         // 文字轉語音
-        case whisper        // 語音轉文字
-        case images         // 圖片生成
-        case models         // 模型列表
-        case embeddings     // 將文字轉為數字表示 (？)
-        case fineTuning     // 訓練模型微調 (？)
-        case files          // 檔案上傳 / 下載 (？)
-        case moderations    // 文字是否違反OpenAI的內容政策進行分類 (？)
-        case assistants     // 建立一個助手 (？)
-        case threads        // 建立線程 (？)
+        case chat                   // 聊天問答
+        case speech                 // 文字轉語音
+        case whisper                // 語音轉文字
+        case images                 // 圖片生成
+        case models                 // 模型列表
+        case embeddings             // 將文字轉為數字表示 (？)
+        case fineTuning             // 訓練模型微調 (？)
+        case files                  // 檔案上傳 / 下載 (？)
+        case moderations            // 文字是否違反OpenAI的內容政策進行分類 (？)
+        case assistants             // 建立一個助手 (？)
+        case threads                // 建立線程 (？)
+        case custom(_ path: String) // 自訂路徑 (audio/translations)
         
         /// 取得url
         /// - Returns: String
@@ -49,6 +50,7 @@ public extension WWSimpleChatGPT {
             case .moderations: path = "moderations"
             case .assistants: path = "assistants"
             case .threads: path = "threads"
+            case .custom(let _path): path = _path
             }
             
             return "\(WWSimpleChatGPT.baseURL)/\(WWSimpleChatGPT.version)/\(path)"
@@ -56,7 +58,7 @@ public extension WWSimpleChatGPT {
     }
     
     /// ChatGPT錯誤
-    enum ChatGPTError: Error {
+    enum ErrorMessage: Error {
         case error(_ error: [String: Any])
     }
 }

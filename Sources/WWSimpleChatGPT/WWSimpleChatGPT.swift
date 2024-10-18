@@ -160,7 +160,7 @@ private extension WWSimpleChatGPT {
             
             guard let dictionary = info.data?._jsonObject() as? [String: Any] else { return .success(content) }
             
-            if let error = dictionary["error"] as? [String: Any] { return .failure(WWSimpleChatGPT.ChatGPTError.error(error)) }
+            if let error = dictionary["error"] as? [String: Any] { return .failure(WWSimpleChatGPT.ErrorMessage.error(error)) }
             
             guard let _choices = dictionary["choices"] as? [Any],
                   let _choice = _choices.first as? [String: Any],
@@ -221,10 +221,15 @@ private extension WWSimpleChatGPT {
         case .failure(let error): return .failure(error)
         case .success(let info):
             
-            guard let dictionary = info.data?._jsonObject() as? [String: Any],
-                  let text = dictionary["text"] as? String
-            else {
-                return .success(nil)
+            guard let dictionary = info.data?._jsonObject() as? [String: Any] else { return .failure(WWSimpleChatGPT.ErrorMessage.error(["message": "The value is not JSON."])) }
+            
+            guard let text = dictionary["text"] as? String else {
+                
+                if let error = dictionary["error"] as? [String: Any] {
+                    return .failure(WWSimpleChatGPT.ErrorMessage.error(error))
+                }
+                
+                return .failure(WWSimpleChatGPT.ErrorMessage.error(["message": "Unknow."]))
             }
             
             return .success(text)
@@ -258,7 +263,7 @@ private extension WWSimpleChatGPT {
             
             guard let dictionary = info.data?._jsonObject() as? [String: Any] else { return .success(nil) }
             
-            if let error = dictionary["error"] as? [String: Any] { return .failure(WWSimpleChatGPT.ChatGPTError.error(error)) }
+            if let error = dictionary["error"] as? [String: Any] { return .failure(WWSimpleChatGPT.ErrorMessage.error(error)) }
             if let datas = dictionary["data"] as? [Any] { return .success(datas) }
             
             return .success(nil)
